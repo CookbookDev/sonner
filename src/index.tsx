@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import { getAsset, Loader } from './assets';
 import { useIsDocumentHidden } from './hooks';
 import { toast, ToastState } from './state';
-import './styles.css';
 import {
   isAction,
   type ExternalToast,
@@ -350,11 +349,11 @@ const Toast = (props: ToastProps) => {
           data-close-button
           onClick={
             disabled || !dismissible
-              ? () => {}
+              ? () => { }
               : () => {
-                  deleteToast();
-                  toast.onDismiss?.(toast);
-                }
+                deleteToast();
+                toast.onDismiss?.(toast);
+              }
           }
           className={cn(classNames?.closeButton, toast?.classNames?.closeButton)}
         >
@@ -523,10 +522,10 @@ const Toaster = (props: ToasterProps) => {
     theme !== 'system'
       ? theme
       : typeof window !== 'undefined'
-      ? window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-      : 'light',
+        ? window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+        : 'light',
   );
 
   const listRef = React.useRef<HTMLOListElement>(null);
